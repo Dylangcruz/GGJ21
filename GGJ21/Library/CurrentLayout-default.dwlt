@@ -115,7 +115,11 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
+<<<<<<< refs/remotes/origin/Laura
   controlID: 47
+=======
+  controlID: 74
+>>>>>>> Draco con Moras
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +144,11 @@ MonoBehaviour:
   m_MinSize: {x: 433, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 1
+<<<<<<< refs/remotes/origin/Laura
   controlID: 48
+=======
+  controlID: 75
+>>>>>>> Draco con Moras
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +173,11 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 221}
   m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
+<<<<<<< refs/remotes/origin/Laura
   controlID: 128
+=======
+  controlID: 76
+>>>>>>> Draco con Moras
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,7 +254,11 @@ MonoBehaviour:
   m_MinSize: {x: 433, y: 271}
   m_MaxSize: {x: 14003, y: 10021}
   vertical: 0
+<<<<<<< refs/remotes/origin/Laura
   controlID: 49
+=======
+  controlID: 38
+>>>>>>> Draco con Moras
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -505,9 +521,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< refs/remotes/origin/Laura
     m_Target: {x: -7.2191257, y: 4.2473764, z: 9.735299}
     speed: 2
     m_Value: {x: -7.2191257, y: 4.2473764, z: 9.735299}
+=======
+    m_Target: {x: -6.405032, y: 3.5428371, z: 7.709201}
+    speed: 2
+    m_Value: {x: -6.405032, y: 3.5428371, z: 7.709201}
+>>>>>>> Draco con Moras
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -553,13 +575,23 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< refs/remotes/origin/Laura
     m_Target: {x: -0.08271012, y: 0.7776151, z: -0.10467791, w: -0.6144238}
     speed: 2
     m_Value: {x: -0.08271011, y: 0.77761495, z: -0.10467789, w: -0.61442375}
-  m_Size:
-    m_Target: 11.852886
+=======
+    m_Target: {x: -0.08641005, y: 0.803618, z: -0.12047675, w: -0.576382}
     speed: 2
+    m_Value: {x: -0.08659069, y: 0.80275273, z: -0.12034703, w: -0.5775869}
+>>>>>>> Draco con Moras
+  m_Size:
+    m_Target: 13.362599
+    speed: 2
+<<<<<<< refs/remotes/origin/Laura
     m_Value: 11.852886
+=======
+    m_Value: 12.787176
+>>>>>>> Draco con Moras
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -636,7 +668,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ea330000
     m_LastClickedID: 13290
+<<<<<<< refs/remotes/origin/Laura
     m_ExpandedIDs: 00000000ea330000
+=======
+    m_ExpandedIDs: 00000000ea33000000ca9a3b
+>>>>>>> Draco con Moras
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -691,7 +727,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300009c4b00002e420000a2410000cc3f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
