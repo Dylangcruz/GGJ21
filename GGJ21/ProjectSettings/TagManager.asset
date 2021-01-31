@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - HidingSpot
+  - HidingPlayer
   layers:
   - Default
   - TransparentFX
