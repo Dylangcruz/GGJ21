@@ -7,6 +7,11 @@ public class PlayerInteractions : MonoBehaviour
     private GameObject touchingObject;
     private DirectorScript dScript;
     private int bugAmount;
+    public KeyCode interactKey = KeyCode.E; //key used for interactions
+    
+    public AudioClip bonkSound;
+    public AudioSource audioSrc;
+
     void Start()
     {
         dScript = GameObject.Find("Director").GetComponent<DirectorScript>();
@@ -16,15 +21,18 @@ public class PlayerInteractions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.tag=="HiderPlayer"){
+        touchingObject = GetComponentInChildren<HilightTouching>().touchingObject;
+        Debug.Log(touchingObject);
+        if (this.gameObject.tag=="HiderPlayer"){
             HiderActions();
         }else{
             SeekerActions();
         }
+       
     }
 
     private void HiderActions(){
-        if(Input.GetKeyDown(KeyCode.E) && touchingObject!=null){
+        if(Input.GetKeyDown(interactKey) && touchingObject!=null){
             HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
                 //retrieve old bug
             if(manager.getBug()){
@@ -42,7 +50,7 @@ public class PlayerInteractions : MonoBehaviour
             }
     }
     private void SeekerActions(){
-        if(Input.GetKeyDown(KeyCode.Q) && touchingObject!=null){
+        if(Input.GetKeyDown(interactKey) && touchingObject!=null){
             HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
             //destroy bug
             if(manager.getBug()){
@@ -56,57 +64,14 @@ public class PlayerInteractions : MonoBehaviour
             }
         }
     }
-
-  //Highlight near
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "HidingSpot")
-        {
-            other.gameObject.GetComponent<Outline>().enabled = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "HidingSpot")
-        {
-            other.gameObject.GetComponent<Outline>().enabled = false;
-        }
-    }
-
-
-
-//Highlight touching
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "HidingSpot")
+        if (other.gameObject.tag != "HiderPlayer" &&  other.gameObject.tag != "SeekerPlayer")
         {
-            //make sure only one is being touched
-            if(touchingObject!=null){
-                GameObject tempObject = touchingObject;
-                tempObject.GetComponent<Outline>().OutlineColor = Color.yellow;
-            }
-            touchingObject = other.gameObject;
-            touchingObject.GetComponent<Outline>().OutlineColor = Color.green;
-        }
+            Debug.Log("Here!");
+            audioSrc.PlayOneShot(bonkSound,10);
+        }   
     }
-    
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.tag == "HidingSpot")
-        {
-            touchingObject.GetComponent<Outline>().OutlineColor = Color.green;
-        }
-    }
-    
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.tag == "HidingSpot" && touchingObject!=null)
-        {
-            touchingObject.GetComponent<Outline>().OutlineColor = Color.yellow;
-            touchingObject=null;
-        }
-    }
-
     public int getBugAmount(){
         return bugAmount;
     }

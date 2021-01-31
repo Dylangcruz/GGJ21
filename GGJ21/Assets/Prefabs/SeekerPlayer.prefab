@@ -62,15 +62,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4413466716883787152, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
+        type: 3}
+      propertyPath: bonkSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ee2ee676448b4cb4b80ecb65aa54cd55, type: 3}
+    - target: {fileID: 4413466716883787152, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
+        type: 3}
+      propertyPath: interactKey
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 5041535868525939018, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
         type: 3}
       propertyPath: m_Name
       value: SeekerPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 5041535868525939018, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
+    - target: {fileID: 6324847300241067648, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
         type: 3}
-      propertyPath: m_TagString
-      value: SeekerPlayer
+      propertyPath: outlineWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075262526067590834, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818531532848463640, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f2008a0aa97b99f4d8d024c029e4892e, type: 3}
+    - target: {fileID: 8818531532848463640, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6f2710368d54e74a9505d2f6d2e5b1d, type: 3}
