@@ -47,21 +47,6 @@ public class PlayerMovement : MonoBehaviour
 
 
         }
-<<<<<<< HEAD
-        //bury or dig
-        if (Input.GetKey(KeyCode.E))
-        {
-            if (point!=null){
-                //Do bury if holding a point or 
-                pointScript = point.GetComponent<PointActions>();
-                pointScript.Bury(this.gameObject);
-            }else{
-                //search
-                //If point is found, set point as the found point and do dig up
-                //point.transform.parent = this.transform;
-            }
-        }
-=======
 
       
         //move
@@ -71,15 +56,12 @@ public class PlayerMovement : MonoBehaviour
 
         GetComponent<Rigidbody>().velocity = movementVector * speed;
         
-        Debug.Log(GetComponent<Rigidbody>().velocity);
-        
         //rotate model
         if (gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
         {
             transform.forward = gameObject.GetComponent<Rigidbody>().velocity;
         }
 
->>>>>>> befb368f54c10e0bdf39b0fd4801693e5ff8fb45
     }
 
 
