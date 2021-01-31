@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312130217997475132}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.201086, y: -1.9371315, z: 1.7378335}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5385517669883449447}
@@ -201,6 +201,8 @@ MonoBehaviour:
   bugAmount: 0
   interactKey: 32
   bonkSound: {fileID: 8300000, guid: ee2ee676448b4cb4b80ecb65aa54cd55, type: 3}
+  placedSound: {fileID: 8300000, guid: 19d717441dff40947801a25b6d88e3df, type: 3}
+  foundSound: {fileID: 8300000, guid: 7fdda7b130767334ca97d6b393442b80, type: 3}
   audioSrc: {fileID: 3312130218913120422}
 --- !u!136 &3312130218285011189
 CapsuleCollider:
@@ -473,18 +475,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e52091957a86f2546907fe109a0e309d,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e52091957a86f2546907fe109a0e309d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e52091957a86f2546907fe109a0e309d,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e52091957a86f2546907fe109a0e309d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e52091957a86f2546907fe109a0e309d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.037
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e52091957a86f2546907fe109a0e309d,
         type: 3}
