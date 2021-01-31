@@ -5,19 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    Vector3 up = Vector3.zero,
-            right = new Vector3(0, 90, 0),
-            down = new Vector3(0, 180, 0),
-            left = new Vector3(0, 270, 0),
-            currentDirection = Vector3.zero;
-
-    Vector3 nextPos, destination, direction;
     public float speed = 5f;
+    public KeyCode upKey = KeyCode.W; //upKey
+    public KeyCode downKey = KeyCode.S; //upKey
+    public KeyCode leftKey = KeyCode.A; //upKey
+    public KeyCode rightKey = KeyCode.D; //upKey
 
-    private void Start()
-    {
-        currentDirection = up;
-    }
 
     // Update is called once per frame
     void Update()
@@ -29,44 +22,50 @@ public class PlayerMovement : MonoBehaviour
     {
         int horizontalValue = 0;
         int verticalValue = 0;
-        if (Input.GetKey(KeyCode.W))
+
+
+        if (Input.GetKey(upKey))
         {
             verticalValue += 1;
-            currentDirection = up;
+
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(downKey))
         {
             verticalValue -= 1;
-            currentDirection = down;
+
 
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(leftKey))
         {
             horizontalValue -= 1;
-            currentDirection = left ;
+
 
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(rightKey))
         {
             horizontalValue += 1;
-            currentDirection = right;
+
 
         }
 
-
-
-        //redirect model
-        transform.localEulerAngles = currentDirection;
+      
         //move
 
         Vector3 movementVector = (Vector3.right * horizontalValue +
                                   Vector3.forward * verticalValue).normalized;
+
         GetComponent<Rigidbody>().velocity = movementVector * speed;
         
         Debug.Log(GetComponent<Rigidbody>().velocity);
+        
+        //rotate model
+        if (gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
+        {
+            transform.forward = gameObject.GetComponent<Rigidbody>().velocity;
+        }
 
     }
-    
+
 
 }
