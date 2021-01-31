@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float speed = 5f;
     public KeyCode upKey = KeyCode.W; //upKey
     public KeyCode downKey = KeyCode.S; //upKey
