@@ -9,7 +9,7 @@ public class PlayerInteractions : MonoBehaviour
     public int bugAmount;
     public KeyCode interactKey = KeyCode.E; //key used for interactions
     
-    public AudioClip bonkSound;
+    public AudioClip bonkSound, placedSound, foundSound;
     public AudioSource audioSrc;
 
     void Start()
@@ -37,13 +37,15 @@ public class PlayerInteractions : MonoBehaviour
                 //retrieve old bug
             if(manager.getBug()){
                 Debug.Log("Retrieved bug");
-                touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.gray;
+                // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.gray;
+                audioSrc.PlayOneShot(foundSound,2);
                 manager.setBug(false);
                 bugAmount++;
             //hide new bug
             }else if(bugAmount>0){
                 Debug.Log("Planted bug");
-                touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                audioSrc.PlayOneShot(placedSound,2);
                 manager.setBug(true);
                 bugAmount--;
                 }
@@ -58,7 +60,8 @@ public class PlayerInteractions : MonoBehaviour
                 manager.setBug(false);
                 Debug.Log("Destroyed bug");
                 dScript.foundBug();
-                touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                audioSrc.PlayOneShot(foundSound,2);
             }else{
                 Debug.Log("No bug found!");
                 //Add some stall here
@@ -70,7 +73,7 @@ public class PlayerInteractions : MonoBehaviour
         if (other.gameObject.tag != "HiderPlayer" &&  other.gameObject.tag != "SeekerPlayer")
         {
             Debug.Log("Here!");
-            audioSrc.PlayOneShot(bonkSound,10);
+            audioSrc.PlayOneShot(bonkSound,2);
         }   
     }
     public int getBugAmount(){
