@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float speed = 5f;
     public KeyCode upKey = KeyCode.W; //upKey
     public KeyCode downKey = KeyCode.S; //upKey
@@ -56,8 +55,6 @@ public class PlayerMovement : MonoBehaviour
                                   Vector3.forward * verticalValue).normalized;
 
         GetComponent<Rigidbody>().velocity = movementVector * speed;
-        
-        Debug.Log(GetComponent<Rigidbody>().velocity);
         
         //rotate model
         if (gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)

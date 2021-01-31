@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
+    private GameObject touchingObject = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,27 +14,52 @@ public class PlayerInteractions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Actions();
+        if(touchingObject!=null){touchingObject.GetComponent<Outline>().OutlineColor = Color.green;}
     }
-  
+
+    private void Actions(){
+        if(Input.GetKey(KeyCode.E) && touchingObject!=null){
+            Debug.Log("Planted");
+        }
+    }
+  //Highlight near
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("here");
-
         if (other.gameObject.tag == "HidingSpot")
         {
             other.gameObject.GetComponent<Outline>().enabled = true;
-            Debug.Log(other.gameObject.GetComponent<Outline>());
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("here");
-
         if (other.gameObject.tag == "HidingSpot")
         {
             other.gameObject.GetComponent<Outline>().enabled = false;
-            Debug.Log(other.gameObject.GetComponent<Outline>());
+        }
+    }
+
+
+
+//Highlight touching
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "HidingSpot")
+        {
+            if(touchingObject!=null){
+                GameObject tempObject = touchingObject;
+                tempObject.GetComponent<Outline>().OutlineColor = Color.yellow;
+            }
+            touchingObject = other.gameObject;
+        }
+    }
+    
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.tag == "HidingSpot" && touchingObject!=null)
+        {
+            touchingObject.GetComponent<Outline>().OutlineColor = Color.yellow;
+            touchingObject=null;
         }
     }
 
