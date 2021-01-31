@@ -275,6 +275,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1084876418436325193, guid: 3c1f0984d290db34bb5225e4f6c931dd,
+        type: 3}
+      propertyPath: m_TagString
+      value: HidingPlayer
+      objectReference: {fileID: 0}
     - target: {fileID: 7442830790477670288, guid: 3c1f0984d290db34bb5225e4f6c931dd,
         type: 3}
       propertyPath: m_RootOrder

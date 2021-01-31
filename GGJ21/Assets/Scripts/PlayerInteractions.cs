@@ -16,39 +16,48 @@ public class PlayerInteractions : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        Actions();
+    {
+        if(this.gameObject.tag=="HiderPlayer"){
+            HiderActions();
+        }else{
+            SeekerActions();
+        }
         if(touchingObject!=null){touchingObject.GetComponent<Outline>().OutlineColor = Color.green;}
     }
 
-    private void Actions(){
+    private void HiderActions(){
         if(Input.GetKeyDown(KeyCode.E) && touchingObject!=null){
             HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
-            if (this.gameObject.tag == "HiderPlayer" && bugAmount>0){
                 //retrieve old bug
-                if(manager.getBug()){
-                    Debug.Log("Retrieved bug");
-                    touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.gray;
-                    manager.setBug(false);
-                    bugAmount++;
-                //hide new bug1
-                }else{
-                    Debug.Log("Planted bug");
-                    touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                    manager.setBug(true);
-                    bugAmount--;
-                }
-            //is seeker
-            }else{
-                //destroy bug
-                if(manager.getBug()){
-                    manager.setBug(false);
-                    Debug.Log("Destroyed bug");
+            if(manager.getBug()){
+                Debug.Log("Retrieved bug");
+                touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.gray;
+                manager.setBug(false);
+                bugAmount++;
+            //hide new bug1
+            }else if(bugAmount>0){
+                Debug.Log("Planted bug");
+                touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                manager.setBug(true);
+                bugAmount--;
                 }
             }
-
+    }
+    private void SeekerActions(){
+        if(Input.GetKeyDown(KeyCode.Q) && touchingObject!=null){
+            HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
+            //destroy bug
+            if(manager.getBug()){
+                manager.setBug(false);
+                Debug.Log("Destroyed bug");
+                touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            }else{
+                Debug.Log("No bug found!");
+                //Add some stall here
+            }
         }
     }
+
   //Highlight near
     private void OnTriggerStay(Collider other)
     {
