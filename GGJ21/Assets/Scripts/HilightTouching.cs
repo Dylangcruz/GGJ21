@@ -7,8 +7,7 @@ public class HilightTouching : MonoBehaviour
     public GameObject touchingObject;
 
     //Highlight touching
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other){
         if (other.gameObject.tag == "HidingSpot")
         {
             //make sure only one is being touched
@@ -21,15 +20,13 @@ public class HilightTouching : MonoBehaviour
             other.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
-    private void OnTriggerStay(Collider other)
-    {
+    private void OnTriggerStay(Collider other){
         if (other.gameObject.tag == "HidingSpot" && touchingObject==other)
         {
             other.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
+    private void OnTriggerExit(Collider other){
         other.GetComponent<Outline>().OutlineColor = Color.yellow;
         if(other==touchingObject){
             touchingObject=null;

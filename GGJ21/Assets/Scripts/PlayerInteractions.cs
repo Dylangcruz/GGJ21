@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    private GameObject touchingObject;
+    public GameObject touchingObject;
     private DirectorScript dScript;
     private int bugAmount;
     public KeyCode interactKey = KeyCode.E; //key used for interactions
