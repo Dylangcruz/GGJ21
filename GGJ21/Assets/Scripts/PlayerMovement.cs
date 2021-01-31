@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,12 +11,18 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode downKey = KeyCode.S; //upKey
     public KeyCode leftKey = KeyCode.A; //upKey
     public KeyCode rightKey = KeyCode.D; //upKey
-
+    public string sceneName;
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
+            SceneManager.LoadScene(sceneName);
+
+        }
     }
 
     void Move()

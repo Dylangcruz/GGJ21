@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DirectorScript : MonoBehaviour
 {
@@ -17,22 +18,31 @@ public class DirectorScript : MonoBehaviour
     GameObject hider;
     GameObject seekerCam;
     GameObject hiderCam;
+    public Text timerText;
+    public Image timerVisual;
+
     // Update is called once per frame
     void Start(){
         bugsFound = 0;
         timeRemaining = setUpTime;
+
         seeker = GameObject.Find("SeekerPlayer");
         hider = GameObject.Find("HiderPlayer");
         seekerCam = GameObject.Find("SeekerCamera");
         hiderCam = GameObject.Find("HiderCamera");
+        
+
         seeker.GetComponentInChildren<Light>().enabled = false;
         hider.GetComponentInChildren<Light>().enabled = false;
         seekerState(false);
     }
     void Update()
     {
+        timerText.text = Mathf.Ceil(timeRemaining).ToString();
+
         //set up bugs
-        if(setUp){
+        if (setUp){
+            timerFill(setUpTime);
             if((timeRemaining > 0) && (hider.GetComponent<PlayerInteractions>().getBugAmount() > 0)){
             //show that it is set up time
             //change lighting color :)
@@ -44,9 +54,11 @@ public class DirectorScript : MonoBehaviour
 
 
 
-        //5 second wait
-        }else if(prep){
-            if(timeRemaining>0){
+            //5 second wait
+        }
+        else if(prep){
+            timerFill(setUpTime);
+            if (timeRemaining>0){
                 timeRemaining -= Time.deltaTime;
             }else{
                 prep=false;
@@ -57,7 +69,10 @@ public class DirectorScript : MonoBehaviour
 
         //game time
         }else{
-            if(timeRemaining>0){
+            timerFill(gameTime);
+
+            if (timeRemaining>0){
+
                 Camera cam = hiderCam.GetComponent<Camera>();
                 cam.rect = new Rect(0,0,1,0.5f);
                 seekerState(true);
@@ -99,6 +114,21 @@ public class DirectorScript : MonoBehaviour
     private void seekerState(bool state){
         seeker.SetActive(state);
         seekerCam.SetActive(state);
+
+    }
+
+
+    private void timerFill(float gameMoment) 
+    {
+        timerVisual.fillAmount = timeRemaining / gameMoment;
+        if(timerVisual.fillAmount<= .25f)
+        {
+            timerVisual.color = Color.red;
+        }
+        else
+        {
+            timerVisual.color = Color.green;
+        }
 
     }
 }
