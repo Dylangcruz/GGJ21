@@ -48,7 +48,7 @@ public class DirectorScript : MonoBehaviour
             //change lighting color :)
             timeRemaining -= Time.deltaTime;
             }else{
-                timeRemaining = 5;
+                timeRemaining=5;
                 setUp=false;
             }
 
@@ -57,7 +57,7 @@ public class DirectorScript : MonoBehaviour
             //5 second wait
         }
         else if(prep){
-            timerFill(setUpTime);
+            timerFill(5);
             if (timeRemaining>0){
                 timeRemaining -= Time.deltaTime;
             }else{

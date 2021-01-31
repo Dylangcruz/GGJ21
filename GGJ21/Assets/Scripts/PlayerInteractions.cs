@@ -6,7 +6,7 @@ public class PlayerInteractions : MonoBehaviour
 {
     public GameObject touchingObject;
     private DirectorScript dScript;
-    private int bugAmount;
+    public int bugAmount;
     public KeyCode interactKey = KeyCode.E; //key used for interactions
     
     public AudioClip bonkSound;
