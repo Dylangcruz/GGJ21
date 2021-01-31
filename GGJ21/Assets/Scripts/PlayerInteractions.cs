@@ -4,23 +4,49 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    private GameObject touchingObject = null;
-    // Start is called before the first frame update
+    private GameObject touchingObject;
+    public int bugAmount = 3;
+
+    // initial values
     void Start()
     {
-        
+        touchingObject = null;
+        bugAmount = 3;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         Actions();
         if(touchingObject!=null){touchingObject.GetComponent<Outline>().OutlineColor = Color.green;}
     }
 
     private void Actions(){
-        if(Input.GetKey(KeyCode.E) && touchingObject!=null){
-            Debug.Log("Planted");
+        if(Input.GetKeyDown(KeyCode.E) && touchingObject!=null){
+            HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
+            if (this.gameObject.tag == "HiderPlayer" && bugAmount>0){
+                //retrieve old bug
+                if(manager.getBug()){
+                    Debug.Log("Retrieved bug");
+                    touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.gray;
+                    manager.setBug(false);
+                    bugAmount++;
+                //hide new bug1
+                }else{
+                    Debug.Log("Planted bug");
+                    touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                    manager.setBug(true);
+                    bugAmount--;
+                }
+            //is seeker
+            }else{
+                //destroy bug
+                if(manager.getBug()){
+                    manager.setBug(false);
+                    Debug.Log("Destroyed bug");
+                }
+            }
+
         }
     }
   //Highlight near
@@ -46,6 +72,7 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (other.gameObject.tag == "HidingSpot")
         {
+            //make sure only one is being touched
             if(touchingObject!=null){
                 GameObject tempObject = touchingObject;
                 tempObject.GetComponent<Outline>().OutlineColor = Color.yellow;
