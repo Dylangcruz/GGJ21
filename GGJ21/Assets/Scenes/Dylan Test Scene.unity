@@ -225,6 +225,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c1f0984d290db34bb5225e4f6c931dd, type: 3}
+--- !u!4 &277219810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7442830790477670288, guid: 3c1f0984d290db34bb5225e4f6c931dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 277219809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &499817289
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +244,7 @@ GameObject:
   - component: {fileID: 499817291}
   - component: {fileID: 499817290}
   - component: {fileID: 499817294}
+  - component: {fileID: 499817295}
   m_Layer: 0
   m_Name: Cube
   m_TagString: HidingSpot
@@ -337,6 +344,22 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!54 &499817295
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499817289}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &602783680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -510,6 +533,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c1f0984d290db34bb5225e4f6c931dd, type: 3}
+--- !u!4 &627560526 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7442830790477670288, guid: 3c1f0984d290db34bb5225e4f6c931dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 627560525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &706178968
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +587,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.5
+    width: 0.495
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -606,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9d7e33145a40b4ab0c6542c8743900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 277219810}
   smoothSpeed: 0.5
   offset: {x: 0, y: 10, z: -7.5}
 --- !u!1 &1180651364
@@ -640,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9d7e33145a40b4ab0c6542c8743900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 627560526}
   smoothSpeed: 0.5
   offset: {x: 0, y: 10, z: -7.5}
 --- !u!81 &1180651366
@@ -670,7 +699,7 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
+    x: 0.5005
     y: 0
     width: 0.5
     height: 1
