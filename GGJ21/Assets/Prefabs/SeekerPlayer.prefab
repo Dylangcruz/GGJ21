@@ -65,7 +65,12 @@ PrefabInstance:
     - target: {fileID: 5041535868525939018, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
         type: 3}
       propertyPath: m_Name
-      value: HiderPlayer
+      value: SeekerPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5041535868525939018, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
+        type: 3}
+      propertyPath: m_TagString
+      value: SeekerPlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6f2710368d54e74a9505d2f6d2e5b1d, type: 3}

@@ -5,13 +5,12 @@ using UnityEngine;
 public class PlayerInteractions : MonoBehaviour
 {
     private GameObject touchingObject;
-    public int bugAmount = 3;
-
-    // initial values
+    private DirectorScript dScript;
+    private int bugAmount;
     void Start()
     {
-        touchingObject = null;
-        bugAmount = 3;
+        dScript = GameObject.Find("Director").GetComponent<DirectorScript>();
+        bugAmount = dScript.initialBugs;
     }
 
     // Update is called once per frame
@@ -33,7 +32,7 @@ public class PlayerInteractions : MonoBehaviour
                 touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.gray;
                 manager.setBug(false);
                 bugAmount++;
-            //hide new bug1
+            //hide new bug
             }else if(bugAmount>0){
                 Debug.Log("Planted bug");
                 touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
@@ -49,6 +48,7 @@ public class PlayerInteractions : MonoBehaviour
             if(manager.getBug()){
                 manager.setBug(false);
                 Debug.Log("Destroyed bug");
+                dScript.foundBug();
                 touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.blue;
             }else{
                 Debug.Log("No bug found!");
@@ -89,6 +89,7 @@ public class PlayerInteractions : MonoBehaviour
             touchingObject.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
+    
     private void OnCollisionStay(Collision other)
     {
         if (other.gameObject.tag == "HidingSpot")
@@ -106,4 +107,7 @@ public class PlayerInteractions : MonoBehaviour
         }
     }
 
+    public int getBugAmount(){
+        return bugAmount;
+    }
 }

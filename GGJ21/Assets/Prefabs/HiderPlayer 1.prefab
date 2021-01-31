@@ -33,7 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1660640847240887798}
-  - {fileID: 5402458577029437035}
+  - {fileID: 4303197684978427571}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -66,7 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147e2ae0f717990468d1833deeb01604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bugAmount: 3
 --- !u!136 &3839025920260608969
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -111,7 +110,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!1 &5402458577029437034
+--- !u!1 &7064147072683094598
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,8 +118,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5402458577029437035}
-  - component: {fileID: 5402458577029437032}
+  - component: {fileID: 4303197684978427571}
+  - component: {fileID: 7377838226477199439}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -128,39 +127,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5402458577029437035
+--- !u!4 &4303197684978427571
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5402458577029437034}
+  m_GameObject: {fileID: 7064147072683094598}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 8.83, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3293077285602308499}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!108 &5402458577029437032
+--- !u!108 &7377838226477199439
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5402458577029437034}
+  m_GameObject: {fileID: 7064147072683094598}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4.08
-  m_Range: 20.807377
-  m_SpotAngle: 125
-  m_InnerSpotAngle: 1
+  m_Intensity: 10
+  m_Range: 34
+  m_SpotAngle: 56
+  m_InnerSpotAngle: 5
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
