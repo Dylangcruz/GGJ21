@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setUpTime: 30
-  gameTime: 5
+  gameTime: 90
   initialBugs: 3
 --- !u!4 &577363666
 Transform:
@@ -916,7 +916,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioSrc
       value: 
-      objectReference: {fileID: 985944769}
+      objectReference: {fileID: 0}
     - target: {fileID: 2468541546676367964, guid: 9b7bd6bf85f53ce49a3c53462dded02a,
         type: 3}
       propertyPath: interactKey

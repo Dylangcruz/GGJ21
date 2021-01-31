@@ -5,11 +5,6 @@ using UnityEngine;
 public class HilightTouching : MonoBehaviour
 {
     public GameObject touchingObject;
-    // Start is called before the first frame update
-    void Start()
-    {
-        touchingObject = null;
-    }
 
     //Highlight touching
     private void OnTriggerEnter(Collider other)
@@ -23,21 +18,18 @@ public class HilightTouching : MonoBehaviour
                 tempObject.GetComponent<Outline>().OutlineColor = Color.yellow;
             }
             touchingObject = other.gameObject;
+            other.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "HidingSpot")
+        if (other.gameObject.tag == "HidingSpot" && touchingObject==other)
         {
-            other.GetComponent<Outline>().OutlineColor = Color.green;
+            touchingObject.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "HidingSpot" && touchingObject != null)
-        {
-            touchingObject.GetComponent<Outline>().OutlineColor = Color.yellow;
-            touchingObject = null;
-        }
+        other.GetComponent<Outline>().OutlineColor = Color.yellow;
     }
 }
