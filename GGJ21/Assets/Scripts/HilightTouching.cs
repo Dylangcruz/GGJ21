@@ -25,11 +25,14 @@ public class HilightTouching : MonoBehaviour
     {
         if (other.gameObject.tag == "HidingSpot" && touchingObject==other)
         {
-            touchingObject.GetComponent<Outline>().OutlineColor = Color.green;
+            other.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         other.GetComponent<Outline>().OutlineColor = Color.yellow;
+        if(other==touchingObject){
+            touchingObject=null;
+        }
     }
 }

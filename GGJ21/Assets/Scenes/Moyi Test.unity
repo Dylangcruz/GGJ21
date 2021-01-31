@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &150207224 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7285832823023161556, guid: 9b7bd6bf85f53ce49a3c53462dded02a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6162242186315248742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &298148993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,7 +922,7 @@ PrefabInstance:
         type: 3}
       propertyPath: audioSrc
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 150207224}
     - target: {fileID: 2468541546676367964, guid: 9b7bd6bf85f53ce49a3c53462dded02a,
         type: 3}
       propertyPath: interactKey
