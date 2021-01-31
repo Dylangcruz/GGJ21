@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class HighlightArea : MonoBehaviour
 {
-    public GameObject touchingObject;
-    // Start is called before the first frame update
-    void Start()
-    {
-        touchingObject = null;
-    }
-    
     //Highlight near
     private void OnTriggerStay(Collider other)
     {

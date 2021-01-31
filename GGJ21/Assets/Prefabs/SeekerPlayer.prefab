@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 4413466716883787152, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
         type: 3}
       propertyPath: interactKey
-      value: 101
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 5041535868525939018, guid: a6f2710368d54e74a9505d2f6d2e5b1d,
         type: 3}

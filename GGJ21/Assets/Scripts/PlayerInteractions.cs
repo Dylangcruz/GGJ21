@@ -48,6 +48,7 @@ public class PlayerInteractions : MonoBehaviour
                 bugAmount--;
                 }
             }
+            touchingObject=null;
     }
     private void SeekerActions(){
         if(Input.GetKeyDown(interactKey) && touchingObject!=null){
