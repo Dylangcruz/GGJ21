@@ -22,7 +22,6 @@ public class PlayerInteractions : MonoBehaviour
         }else{
             SeekerActions();
         }
-        if(touchingObject!=null){touchingObject.GetComponent<Outline>().OutlineColor = Color.green;}
     }
 
     private void HiderActions(){
@@ -87,6 +86,14 @@ public class PlayerInteractions : MonoBehaviour
                 tempObject.GetComponent<Outline>().OutlineColor = Color.yellow;
             }
             touchingObject = other.gameObject;
+            touchingObject.GetComponent<Outline>().OutlineColor = Color.green;
+        }
+    }
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.tag == "HidingSpot")
+        {
+            touchingObject.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
     
