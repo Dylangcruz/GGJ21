@@ -8,6 +8,8 @@ TagManager:
   - HidingSpot
   - HiderPlayer
   - SeekerPlayer
+  - Ground
+  - Director
   layers:
   - Default
   - TransparentFX

@@ -21,14 +21,15 @@ public class HilightTouching : MonoBehaviour
         }
     }
     private void OnTriggerStay(Collider other){
-        if (other.gameObject.tag == "HidingSpot")
-        {
+        if (other.gameObject.tag == "HidingSpot"){
             touchingObject=other.gameObject;
             other.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
     private void OnTriggerExit(Collider other){
-        other.GetComponent<Outline>().OutlineColor = Color.yellow;
-        touchingObject=null;
+        if (other.gameObject.tag == "HidingSpot"){
+            other.GetComponent<Outline>().OutlineColor = Color.yellow;
+            touchingObject=null;
+        }
     }
 }

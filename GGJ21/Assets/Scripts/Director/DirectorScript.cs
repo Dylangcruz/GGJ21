@@ -9,35 +9,25 @@ public class DirectorScript : MonoBehaviour
     public float gameTime = 0;
     private bool setUp=true;
     private bool prep=true;
-    private float timeRemaining;
+    private float timeRemaining=0;
 
     private int bugsFound;
     public int initialBugs;
 
     GameObject seeker;
     GameObject hider;
-    GameObject seekerCam;
-    GameObject hiderCam;
     public Text timerText;
     public Image timerVisual;
 
-    // Update is called once per frame
     void Start(){
-        bugsFound = 0;
         timeRemaining = setUpTime;
 
-        seeker = GameObject.Find("SeekerPlayer");
-        hider = GameObject.Find("HiderPlayer");
-        seekerCam = GameObject.Find("SeekerCamera");
-        hiderCam = GameObject.Find("HiderCamera");
-        
-
-        seeker.GetComponentInChildren<Light>().enabled = false;
-        hider.GetComponentInChildren<Light>().enabled = false;
-        seekerState(false);
+        seeker = GameObject.FindGameObjectWithTag("SeekerPlayer");
+        hider = GameObject.FindGameObjectWithTag("HiderPlayer");
+        seeker.SetActive(false);
     }
-    void Update()
-    {
+
+    void Update(){
         timerText.text = Mathf.Ceil(timeRemaining).ToString();
 
         //set up bugs
@@ -72,10 +62,7 @@ public class DirectorScript : MonoBehaviour
             timerFill(gameTime);
 
             if (timeRemaining>0){
-
-                Camera cam = hiderCam.GetComponent<Camera>();
-                cam.rect = new Rect(0,0,1,0.5f);
-                seekerState(true);
+                seeker.SetActive(true);
                 if(initialBugs==bugsFound){
                     seekerWins();
                 }
@@ -95,31 +82,19 @@ public class DirectorScript : MonoBehaviour
     }
     private void seekerWins(){
         //seeker wins hooray!
-        hiderState(false);
-        seeker.GetComponentInChildren<Light>().color = Color.blue;
+        hider.SetActive(false);
         seeker.GetComponentInChildren<Light>().enabled = true;
-        seekerCam.GetComponent<Camera>().rect = new Rect(0,0,1,1);
+        //fix camera
     }
     private void hiderWins(){
         //hider wins hooray?
-        seekerState(false);
-        hider.GetComponentInChildren<Light>().color = Color.red;
+        seeker.SetActive(false);
         hider.GetComponentInChildren<Light>().enabled = true;
-        hiderCam.GetComponent<Camera>().rect = new Rect(0,0,1,1);
-    }
-    private void hiderState(bool state){
-        hider.SetActive(state);
-        hiderCam.SetActive(state);
-    }
-    private void seekerState(bool state){
-        seeker.SetActive(state);
-        seekerCam.SetActive(state);
-
+        //fix camera
     }
 
 
-    private void timerFill(float gameMoment) 
-    {
+    private void timerFill(float gameMoment){
         timerVisual.fillAmount = timeRemaining / gameMoment;
         if(timerVisual.fillAmount<= .25f)
         {

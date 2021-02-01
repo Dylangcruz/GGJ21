@@ -12,11 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode leftKey = KeyCode.A; //upKey
     public KeyCode rightKey = KeyCode.D; //upKey
     public string sceneName;
+    private bool isGrounded = false;
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if(isGrounded){Move();}
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
@@ -24,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+
+    void OnCollisionStay(Collision other){if (other.gameObject.tag == "Ground") {isGrounded = true;}}
+    void OnCollisionExit(Collision other){if (other.gameObject.tag == "Ground") {isGrounded = false;}}
 
     void Move()
     {
@@ -63,11 +67,11 @@ public class PlayerMovement : MonoBehaviour
 
         GetComponent<Rigidbody>().velocity = movementVector * speed;
         
-        //rotate model
-        if (gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
-        {
-            transform.forward = gameObject.GetComponent<Rigidbody>().velocity;
-        }
+        // //rotate model
+        // if (gameObject.GetComponent<Rigidbody>().velocity != Vector3.zero)
+        // {
+        //     transform.forward = gameObject.GetComponent<Rigidbody>().velocity;
+        // }
 
     }
 
