@@ -622,7 +622,117 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
+<<<<<<< HEAD:GGJ21/Assets/Prefabs/TestPrefabs/updatedHider.prefab
   m_Radius: 0.3125
   m_Height: 1.0625
   m_Direction: 1
   m_Center: {x: 0, y: 0.53125, z: -0.1875}
+=======
+  m_Radius: 0.4485188
+  m_Height: 2.5962481
+  m_Direction: 1
+  m_Center: {x: -0.048667967, y: -0.024476767, z: 0.2522561}
+--- !u!114 &8853145460713892638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8853145460713892636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bdfae5aba25194b8100905db305cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchingObject: {fileID: 0}
+--- !u!1001 &5678254472080931692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2132049564477034793}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9da534f04ceef104f9ec4731477ed14f, type: 2}
+    - target: {fileID: 919132149155446097, guid: bb9414fb93ef5a54abfe723671fbb37f,
+        type: 3}
+      propertyPath: m_Name
+      value: spy1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb9414fb93ef5a54abfe723671fbb37f, type: 3}
+--- !u!4 &5280346485481102471 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb9414fb93ef5a54abfe723671fbb37f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5678254472080931692}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> f0f7b24a5cf4d75dabd87a10162f533bb96a0604:GGJ21/Assets/Prefabs/HiderPlayer.prefab
