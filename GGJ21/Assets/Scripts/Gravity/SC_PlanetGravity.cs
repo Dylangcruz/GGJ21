@@ -7,7 +7,7 @@ public class SC_PlanetGravity : MonoBehaviour
     public Transform planet;
     public bool alignToPlanet = true;
 
-    float gravityConstant = 9.8f;
+    private float gravityConstant = 9.8f;
     Rigidbody r;
 
     void Start()
@@ -20,7 +20,7 @@ public class SC_PlanetGravity : MonoBehaviour
         Vector3 toCenter = planet.position - transform.position;
         toCenter.Normalize();
 
-        r.AddForce(toCenter * gravityConstant, ForceMode.Acceleration);
+        r.AddForce(toCenter * gravityConstant * r.mass, ForceMode.Acceleration);
 
         if (alignToPlanet)
         {

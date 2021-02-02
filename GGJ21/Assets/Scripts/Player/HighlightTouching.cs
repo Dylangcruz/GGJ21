@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HilightTouching : MonoBehaviour
+public class HighlightTouching : MonoBehaviour
 {
     public GameObject touchingObject;
 
     //Highlight touching
     private void OnTriggerEnter(Collider other){
-        if (other.gameObject.tag == "HidingSpot")
-        {
+        if (other.gameObject.tag == "HidingSpot"){
             //make sure only one is being touched
-            if (touchingObject != null)
-            {
+            if (touchingObject != null){
                 GameObject tempObject = touchingObject;
                 tempObject.GetComponent<Outline>().OutlineColor = Color.yellow;
             }
@@ -20,6 +18,7 @@ public class HilightTouching : MonoBehaviour
             other.GetComponent<Outline>().OutlineColor = Color.green;
         }
     }
+    //make sure other player doesnt paint yellow over green if still in contact
     private void OnTriggerStay(Collider other){
         if (other.gameObject.tag == "HidingSpot"){
             touchingObject=other.gameObject;

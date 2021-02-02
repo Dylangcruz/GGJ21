@@ -5,25 +5,39 @@ using UnityEngine.UI;
 
 public class DirectorScript : MonoBehaviour
 {
-    public float setUpTime = 0;
-    public float gameTime = 0;
-    private bool setUp=true;
-    private bool prep=true;
-    private float timeRemaining=0;
+    //default game settings
+    public float setUpTime = 30;
+    public float prepTime = 5;
+    public float gameTime = 90;
+    public enum RoundState {SetUp,Prep,Game};
+    RoundState currentRound;
+
+    //internal timer
+    private float setUpRemaining;
+    private float timeRemaining;
 
     private int bugsFound;
     public int initialBugs;
 
     GameObject seeker;
     GameObject hider;
+    private HiderInteractions hScript;
+
     public Text timerText;
     public Image timerVisual;
 
+/** TODO:
+Make timer its own script
+Create array to hold objects that have been bugged
+highlight bugged objects for hider for eventual multiplayer
+**/
     void Start(){
+        setUpRemaining = setUpTime;
         timeRemaining = setUpTime;
-
         seeker = GameObject.FindGameObjectWithTag("SeekerPlayer");
         hider = GameObject.FindGameObjectWithTag("HiderPlayer");
+        hScript = hider.GetComponent<HiderInteractions>();
+        currentRound = RoundState.SetUp;
         seeker.SetActive(false);
     }
 
@@ -31,44 +45,60 @@ public class DirectorScript : MonoBehaviour
         timerText.text = Mathf.Ceil(timeRemaining).ToString();
 
         //set up bugs
-        if (setUp){
+        if (currentRound==RoundState.SetUp){
+            hScript.isSetUp = true;
             timerFill(setUpTime);
-            if((timeRemaining > 0) && (hider.GetComponent<PlayerInteractions>().getBugAmount() > 0)){
-            //show that it is set up time
-            //change lighting color :)
-            timeRemaining -= Time.deltaTime;
-            }else{
-                timeRemaining=5;
-                setUp=false;
-            }
-
-
-
-            //5 second wait
-        }
-        else if(prep){
-            timerFill(5);
-            if (timeRemaining>0){
+            //fix this condition move it down
+            if((timeRemaining > 0) && (hScript.bugAmount > 0)){
+                //show that it is set up time
+                //change lighting color :)
                 timeRemaining -= Time.deltaTime;
+                //cut to prep time
             }else{
-                prep=false;
-                timeRemaining = gameTime;
+                setUpRemaining -= (setUpTime-timeRemaining);
+                if (setUpRemaining<5){setUpRemaining=0;}
+                    timeRemaining = prepTime;
+                    currentRound=RoundState.Prep;
             }
+        }
 
+        //prep wait
+        if(currentRound==RoundState.Prep){
+            timerFill(prepTime);
+            //start countdown
+            if(timeRemaining>0){
+                timeRemaining -= Time.deltaTime;
+                if(setUpRemaining>prepTime && hScript.bugAmount!=0){
+                    currentRound=RoundState.SetUp;
+                    setUpRemaining -= (prepTime-timeRemaining);
+                    setUpTime = setUpRemaining;
+                    timeRemaining = setUpTime;
+                }
+            //handle not hiding lives and punish
+            }else{
+                //punishment, remove all bugs except one
+                if(hScript.bugAmount>0){
+                    bugsFound = hScript.bugAmount-1;
+                    hScript.bugAmount = 1;
+                }
 
+                currentRound=RoundState.Game;
+                timeRemaining = gameTime;
+                seeker.SetActive(true);
+            }
+        }
 
         //game time
-        }else{
+        if(currentRound==RoundState.Game){
+            hScript.isSetUp=false;
             timerFill(gameTime);
-
             if (timeRemaining>0){
-                seeker.SetActive(true);
                 if(initialBugs==bugsFound){
                     seekerWins();
                 }
                 timeRemaining -= Time.deltaTime;
             }else{
-                if(hider.GetComponent<PlayerInteractions>().getBugAmount() == 0){
+                if(hScript.bugAmount == 0){
                     hiderWins();
                 }else{
                     seekerWins();
@@ -80,6 +110,7 @@ public class DirectorScript : MonoBehaviour
     public void foundBug(){
         bugsFound++;
     }
+
     private void seekerWins(){
         //seeker wins hooray!
         hider.SetActive(false);
@@ -93,8 +124,8 @@ public class DirectorScript : MonoBehaviour
         //fix camera
     }
 
-
     private void timerFill(float gameMoment){
+        if(gameMoment<1){gameMoment=1;}
         timerVisual.fillAmount = timeRemaining / gameMoment;
         if(timerVisual.fillAmount<= .25f)
         {
@@ -104,6 +135,5 @@ public class DirectorScript : MonoBehaviour
         {
             timerVisual.color = Color.green;
         }
-
     }
 }

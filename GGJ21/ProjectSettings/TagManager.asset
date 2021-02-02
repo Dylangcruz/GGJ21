@@ -10,6 +10,7 @@ TagManager:
   - SeekerPlayer
   - Ground
   - Director
+  - Bug
   layers:
   - Default
   - TransparentFX

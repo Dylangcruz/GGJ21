@@ -21,7 +21,7 @@ public class PlayerInteractions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        touchingObject = GetComponentInChildren<HilightTouching>().touchingObject;
+        touchingObject = GetComponentInChildren<HighlightTouching>().touchingObject;
         Debug.Log(touchingObject);
         if (this.gameObject.tag=="HiderPlayer"){
             HiderActions();
