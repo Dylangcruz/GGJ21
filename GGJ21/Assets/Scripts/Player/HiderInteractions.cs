@@ -16,7 +16,7 @@ public class HiderInteractions : MonoBehaviour
 
     void Start()
     {
-        secret = transform.GetChild(3).gameObject;
+        secret = transform.GetChild(2).gameObject.transform.GetChild(0).gameObject;
         isSetUp=true;
         dScript = GameObject.FindGameObjectWithTag("Director").GetComponent<DirectorScript>();
         secretAmount = dScript.initialSecrets;

@@ -10,7 +10,6 @@ TagManager:
   - Ground
   - Director
   - Secret
-  - Bug
   layers:
   - Default
   - TransparentFX
