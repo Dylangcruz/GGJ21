@@ -18,7 +18,6 @@ public class SeekerInteractions : MonoBehaviour
     // Update is called once per frame
     void Update(){
         touchingObject = GetComponentInChildren<HighlightTouching>().touchingObject;
-        Debug.Log(touchingObject);
         SeekerActions();
        
     }
@@ -27,9 +26,9 @@ public class SeekerInteractions : MonoBehaviour
         if(Input.GetKeyDown(interactKey) && touchingObject!=null){
             HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
             //destroy bug
-            if(manager.getBug()){
-                manager.setBug(false);
-                dScript.foundBug();
+            if(manager.getSecret()){
+                manager.setSecret(false);
+                dScript.foundSecret();
                 // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.blue;
                 audioSrc.PlayOneShot(foundSound,5);
             //didn't find bug

@@ -6,7 +6,7 @@ public class PlayerInteractions : MonoBehaviour
 {
     public GameObject touchingObject;
     private DirectorScript dScript;
-    public int bugAmount;
+    public int secretAmount;
     public KeyCode interactKey = KeyCode.E; //key used for interactions
     
     public AudioClip bonkSound, placedSound, foundSound;
@@ -15,14 +15,13 @@ public class PlayerInteractions : MonoBehaviour
     void Start()
     {
         dScript = GameObject.FindGameObjectWithTag("Director").GetComponent<DirectorScript>();
-        bugAmount = dScript.initialBugs;
+        secretAmount = dScript.initialSecrets;
     }
 
     // Update is called once per frame
     void Update()
     {
         touchingObject = GetComponentInChildren<HighlightTouching>().touchingObject;
-        Debug.Log(touchingObject);
         if (this.gameObject.tag=="HiderPlayer"){
             HiderActions();
         }else{
@@ -35,19 +34,18 @@ public class PlayerInteractions : MonoBehaviour
         if(Input.GetKeyDown(interactKey) && touchingObject!=null){
             HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
                 //retrieve old bug
-            if(manager.getBug()){
-                Debug.Log("Retrieved bug");
-                // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.gray;
+            if(manager.getSecret()){
+                // Debug.Log("Retrieved bug");
                 audioSrc.PlayOneShot(foundSound,5);
-                manager.setBug(false);
-                bugAmount++;
+                manager.setSecret(false);
+                secretAmount++;
             //hide new bug
-            }else if(bugAmount>0){
-                Debug.Log("Planted bug");
-                // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            }else if(secretAmount>0){
+                // Debug.Log("Planted bug");
+                touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
                 audioSrc.PlayOneShot(placedSound,5);
-                manager.setBug(true);
-                bugAmount--;
+                manager.setSecret(true);
+                secretAmount--;
                 }
             }
             touchingObject=null;
@@ -56,14 +54,13 @@ public class PlayerInteractions : MonoBehaviour
         if(Input.GetKeyDown(interactKey) && touchingObject!=null){
             HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
             //destroy bug
-            if(manager.getBug()){
-                manager.setBug(false);
-                Debug.Log("Destroyed bug");
-                dScript.foundBug();
-                // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            if(manager.getSecret()){
+                manager.setSecret(false);
+                // Debug.Log("Destroyed bug");
+                dScript.foundSecret();
                 audioSrc.PlayOneShot(foundSound,5);
             }else{
-                Debug.Log("No bug found!");
+                // Debug.Log("No bug found!");
                 //Add some stall here
             }
         }
@@ -72,11 +69,11 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (other.gameObject.tag != "HiderPlayer" &&  other.gameObject.tag != "SeekerPlayer")
         {
-            Debug.Log("Here!");
+            // Debug.Log("Here!");
             audioSrc.PlayOneShot(bonkSound,5);
         }   
     }
-    public int getBugAmount(){
-        return bugAmount;
+    public int getSecretAmount(){
+        return secretAmount;
     }
 }

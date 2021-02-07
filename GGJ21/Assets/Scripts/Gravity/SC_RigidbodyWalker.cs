@@ -70,8 +70,10 @@ public class SC_RigidbodyWalker : MonoBehaviour
         grounded = false;
     }
 
-    void OnCollisionStay()
-    {
-        grounded = true;
+    //Tag planet as ground..
+    void OnCollisionStay(Collision other){
+        if(other.gameObject.tag == "Ground"){
+            grounded = true;
+        }
     }
 }

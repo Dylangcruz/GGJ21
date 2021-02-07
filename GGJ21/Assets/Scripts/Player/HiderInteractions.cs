@@ -6,77 +6,61 @@ public class HiderInteractions : MonoBehaviour
 {
     public GameObject touchingObject;
     private DirectorScript dScript;
-    public int bugAmount;
+    public int secretAmount = 0;
     public KeyCode interactKey = KeyCode.E; //key used for interactions
     public bool isSetUp;
-    public GameObject bug;
+    public GameObject secret;
     
     public AudioClip bonkSound, placedSound, foundSound;
     public AudioSource audioSrc;
 
     void Start()
     {
+        secret = transform.GetChild(3).gameObject;
         isSetUp=true;
         dScript = GameObject.FindGameObjectWithTag("Director").GetComponent<DirectorScript>();
-        bugAmount = dScript.initialBugs;
+        secretAmount = dScript.initialSecrets;
     }
 
     // Update is called once per frame
     void Update(){
         touchingObject = GetComponentInChildren<HighlightTouching>().touchingObject;
-        HiderActions();
+        if(secretAmount>0){
+            secret.SetActive(true);
+        }else{
+            secret.SetActive(false);
+        }
+        hiderActions();
     }
 
-    private void HiderActions(){
+//These could both be one function but made two for readability
+    private void hiderActions(){
         if(Input.GetKeyDown(interactKey) && touchingObject!=null){
-            if(isSetUp){
-                setUpActions();
-            }else{
-                gameActions();
+            HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
+            //retrieve old secret
+            if(manager.getSecret()){
+                //Hider can have only have 1 secret during game
+                if(!isSetUp){
+                    if(secretAmount==0){
+                        audioSrc.PlayOneShot(foundSound,5);
+                        manager.setSecret(false);
+                        secretAmount=1;
+                    }else{
+                        //Play "cant do that" sound, bonk standin
+                        audioSrc.PlayOneShot(bonkSound,5);
+                    }
+                //Hider can have many secrets during setup
+                }else{
+                    audioSrc.PlayOneShot(foundSound,5);
+                    manager.setSecret(false);
+                    secretAmount++;
+                }
+            //hide new secret
+            }else if(secretAmount>0){
+                audioSrc.PlayOneShot(placedSound,5);
+                manager.setSecret(true);
+                secretAmount--;
             }
         }
-    }
-
-    private void setUpActions(){
-        HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
-            //retrieve old bug
-            if(manager.getBug()){
-                // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.gray;
-                audioSrc.PlayOneShot(foundSound,5);
-                manager.setBug(false);
-                bugAmount++;
-            //hide new bug
-            }else if(bugAmount>0){
-                // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                audioSrc.PlayOneShot(placedSound,5);
-                manager.setBug(true);
-                bugAmount--;
-        }
-    }
-
-    private void gameActions(){
-        HidingSpotManager manager = touchingObject.GetComponent<HidingSpotManager>();
-            //retrieve old bug
-            if(manager.getBug()){
-                if(bugAmount == 0){
-                    bug.SetActive(true);
-                    audioSrc.PlayOneShot(foundSound,5);
-                    manager.setBug(false);
-                    bugAmount=1;
-                }else{
-                    //Drop bug warning
-                }
-            //hide new bug
-            }else{
-                if(bugAmount==1){
-                    // touchingObject.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                    bug.SetActive(false);
-                    audioSrc.PlayOneShot(placedSound,5);
-                    manager.setBug(true);
-                    bugAmount=0;
-                }else{
-                    //no bugs available warning
-                }
-            }         
     }
 }

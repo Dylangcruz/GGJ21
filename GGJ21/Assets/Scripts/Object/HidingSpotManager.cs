@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class HidingSpotManager : MonoBehaviour
 {
-    private bool hasBug = false;
-    public void setBug(bool state){
-        hasBug = state;
+    private bool hasSecret = false;
+    public void setSecret(bool state){
+        hasSecret = state;
     }
-    public bool getBug(){
-        return hasBug;
+    public bool getSecret(){
+        return hasSecret;
     }
 }

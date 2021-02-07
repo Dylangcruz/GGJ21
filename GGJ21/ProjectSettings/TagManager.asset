@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
   - HidingSpot
   - HiderPlayer
   - SeekerPlayer
   - Ground
   - Director
+  - Secret
   - Bug
   layers:
   - Default
