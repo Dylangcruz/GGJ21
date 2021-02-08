@@ -92,13 +92,13 @@ highlight bugged objects for hider for eventual multiplayer
     private void seekerWins(){
         //seeker wins hooray!
         hider.SetActive(false);
-        seeker.GetComponentInChildren<Light>().enabled = true;
+        // seeker.GetComponentInChildren<Light>().enabled = true;
         //fix camera
     }
     private void hiderWins(){
         //hider wins hooray?
         seeker.SetActive(false);
-        hider.GetComponentInChildren<Light>().enabled = true;
+        // hider.GetComponentInChildren<Light>().enabled = true;
         //fix camera
     }
 

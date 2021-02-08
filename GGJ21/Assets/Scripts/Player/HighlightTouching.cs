@@ -5,6 +5,7 @@ using UnityEngine;
 public class HighlightTouching : MonoBehaviour
 {
     public GameObject touchingObject;
+    public GameObject touchingPlayer;
 
     //Highlight touching
     private void OnTriggerEnter(Collider other){
@@ -16,6 +17,8 @@ public class HighlightTouching : MonoBehaviour
             }
             touchingObject = other.gameObject;
             other.GetComponent<Outline>().OutlineColor = Color.green;
+        }else if(other.gameObject.tag == "HiderPlayer" || other.gameObject.tag == "SeekerPlayer"){
+            touchingPlayer = other.gameObject;
         }
     }
     //make sure other player doesnt paint yellow over green if still in contact
@@ -29,6 +32,8 @@ public class HighlightTouching : MonoBehaviour
         if (other.gameObject.tag == "HidingSpot"){
             other.GetComponent<Outline>().OutlineColor = Color.yellow;
             touchingObject=null;
+        }else if(other.gameObject.tag == "HiderPlayer" || other.gameObject.tag == "SeekerPlayer"){
+            touchingPlayer = null;
         }
     }
 }

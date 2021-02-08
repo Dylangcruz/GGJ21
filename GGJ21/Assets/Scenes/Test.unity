@@ -450,10 +450,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 520908639785640186, guid: 84478b3663e343344a1b7bfd632e3f9f,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1352643917240206315, guid: 84478b3663e343344a1b7bfd632e3f9f,
         type: 3}
       propertyPath: m_Name
       value: hiderPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352643917240206324, guid: 84478b3663e343344a1b7bfd632e3f9f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1352643917240206325, guid: 84478b3663e343344a1b7bfd632e3f9f,
         type: 3}
@@ -538,6 +548,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 500041765520995438, guid: b62e66e08d0136442915be1dd1908b1f,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1775976886929980527, guid: b62e66e08d0136442915be1dd1908b1f,
         type: 3}
       propertyPath: m_RootOrder
@@ -597,6 +612,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: seekerPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6956824198077324603, guid: b62e66e08d0136442915be1dd1908b1f,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62e66e08d0136442915be1dd1908b1f, type: 3}
